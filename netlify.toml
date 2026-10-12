@@ -1,0 +1,44 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Language-aware root: English browsers go to /en/, everyone else to /vi/.
+[[redirects]]
+  from = "/"
+  to = "/en/"
+  status = 302
+  force = true
+  conditions = { Language = ["en"] }
+
+[[redirects]]
+  from = "/"
+  to = "/vi/"
+  status = 302
+  force = true
+
+# Localized 404 pages. These only fire when no file matches the path.
+[[redirects]]
+  from = "/en/*"
+  to = "/en/404/index.html"
+  status = 404
+
+[[redirects]]
+  from = "/*"
+  to = "/vi/404/index.html"
+  status = 404
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
