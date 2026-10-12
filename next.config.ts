@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
-// On Netlify builds, images are resized by the Netlify Image CDN through a
+// On Netlify builds (NETLIFY_IMAGE_CDN=true in netlify.toml), images are resized by the Netlify Image CDN through a
 // custom loader. Locally (next dev / plain static serve) images are served raw.
-const onNetlify = Boolean(process.env.NETLIFY);
+const onNetlify = process.env.NETLIFY_IMAGE_CDN === "true";
 
 const nextConfig: NextConfig = {
   output: "export",

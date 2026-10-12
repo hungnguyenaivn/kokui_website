@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  NETLIFY_IMAGE_CDN = "true"
 
 # Language-aware root: English browsers go to /en/, everyone else to /vi/.
 [[redirects]]

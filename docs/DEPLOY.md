@@ -24,7 +24,13 @@ Then in the Netlify UI:
    repository → GitHub `hungnguyenaivn/kokui_website`, branch `main`. Every push
    then deploys and every PR gets a preview URL.
 
-Build settings come from `netlify.toml` (`npm run build`, publish `out`, Node 22).
+Build settings come from `netlify.toml` (`npm run build`, publish `out`, Node 22,
+`NETLIFY_IMAGE_CDN=true` so `next/image` uses the Netlify Image CDN).
+
+**Visitor access**: the `hungnguyenaivn` team protects all sites with a Netlify
+login, so the public sees `401`. To launch, open Site configuration → Access &
+security → Visitor access and set it to public for this site (or change the
+team default under Team settings).
 
 ### Checks after each deploy
 
